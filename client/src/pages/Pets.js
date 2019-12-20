@@ -1,33 +1,27 @@
 import React, {useState} from 'react'
 import gql from 'graphql-tag'
-import PetBox from '../components/PetBox'
-import NewPet from '../components/NewPet'
 import { useQuery, useMutation } from '@apollo/react-hooks'
+import PetsList from '../components/PetsList'
+import NewPetModal from '../components/NewPetModal'
 import Loader from '../components/Loader'
 
+<<<<<<< HEAD
 export default function Pets () {
   const [modal, setModal] = useState(false)
   
+=======
+
+export default function Pets () {
+  const [modal, setModal] = useState(false)
+
+
+>>>>>>> a3b380a0a6e799fc9207f00cc7c9fc523a4dd869
   const onSubmit = input => {
     setModal(false)
   }
-
-  const petsList = pets.data.pets.map(pet => (
-    <div className="col-xs-12 col-md-4 col" key={pet.id}>
-      <div className="box">
-        <PetBox pet={pet} />
-      </div>
-    </div>
-  ))
   
   if (modal) {
-    return (
-      <div className="row center-xs">
-        <div className="col-xs-8">
-          <NewPet onSubmit={onSubmit} onCancel={() => setModal(false)}/>
-        </div>
-      </div>
-    )
+    return <NewPetModal onSubmit={onSubmit} onCancel={() => setModal(false)} />
   }
 
   return (
@@ -44,9 +38,7 @@ export default function Pets () {
         </div>
       </section>
       <section>
-        <div className="row">
-          {petsList}
-        </div>
+        <PetsList />
       </section>
     </div>
   )
